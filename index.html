@@ -68,8 +68,16 @@
         margin: auto;
         left: 0;
         right: 0;
-        mix-blend-mode: difference; /*
-        transform: translateX(0); /* Center horizontally */
+        mix-blend-mode: difference;
+        -webkit-mix-blend-mode: difference;
+        /* transform: translateX(0); /* Center horizontally */
+      }
+
+      /* Safari Fallback */
+      .safari-fallback .title-text {
+        mix-blend-mode: normal;
+        -webkit-mix-blend-mode: normal;
+        color: rgb(203, 202, 202); /* Fallback text color for Safari */
       }
     </style>
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
@@ -207,7 +215,7 @@
           });
           onResize();
           // Set the initial scroll position to 10px
-          window.scrollTo(0, 10); // Scrolls the window to 10px on load
+          window.scrollTo(0, 1); // Scrolls the window to 10px on load
         });
 
         document.addEventListener("scroll", function () {
@@ -225,6 +233,13 @@
             elements[i].style.opacity = 0;
           }
         });
+        //const titleText = document.querySelector(".title-text");
+        const isSafari = /^((?!chrome|android).)*safari/i.test(
+          navigator.userAgent
+        );
+        if (isSafari) {
+          document.body.classList.add("safari-fallback");
+        }
       });
     </script>
   </body>
