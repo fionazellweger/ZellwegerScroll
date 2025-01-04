@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vom Lokalen Akteur zum globalen Netzwerk</title>
+    <style type="text/css">
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+      }
+
+      .box {
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: 50% 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: -1;
+      }
+
+      .box-placeholder {
+        position: relative;
+        height: 1000vh; /* Determines scrolling length */
+        background: transparent;
+        box-sizing: content-box;
+      }
+      @font-face {
+        font-family: "AuthenticRegular";
+        src: url("fonts/AUTHENTICSans-90.otf") format("opentype");
+      }
+      @font-face {
+        font-family: "AuthenticBold";
+        src: url("fonts/AUTHENTICSans-130.otf") format("opentype");
+      }
+
+      .inner-text {
+        position: absolute;
+        font-family: "AuthenticRegular";
+        font-size: clamp(18px, 3vw, 21px);
+        line-height: 1.4em;
+        color: rgba(227, 227, 227, 1);
+        max-width: clamp(80px, 900vw, 900px); /* Limit the width of the text */
+        padding: 25px; /* Add padding inside the box */
+        background-color: rgba(23, 23, 23, 1); /* White background */
+        border: 1.75px solid rgba(227, 227, 227, 1); /* 1px white border */
+        border-radius: 15px; /* Optional: rounded corners */
+        margin: auto;
+        left: 0;
+        right: 0;
+        transform: translateX(0); /* Center horizontally */
+      }
+
+      .title-text {
+        position: absolute;
+        font-family: "AuthenticBold";
+        font-size: clamp(50px, 8vw, 95px);
+        line-height: 1.1em;
+        color: rgb(246, 246, 246);
+        max-width: 950px; /* Limit the width of the text */
+        padding: 20px; /* Add padding inside the box */
+        background-color: transparent; /* White background */
+        margin: auto;
+        left: 0;
+        right: 0;
+        mix-blend-mode: difference; /*
+        transform: translateX(0); /* Center horizontally */
+      }
+
+      u.underlined-text {
+        text-decoration: underline;
+        text-underline-offset: 4px; /* Adjust this value to change the distance */
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  </head>
+  <body>
+    <div class="boxes">
+      <div
+        class="box"
+        style="background-image: url('images/kw1.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw2.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw3.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw4.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw5.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw6.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw7.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw8.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw8.jpg'); opacity: 1"
+      ></div>
+    </div>
+
+    <div class="box-placeholder">
+      <div class="title-text" style="top: 7vh">
+        Vom Lokalen Akteur zum globalen Netzwerk
+      </div>
+
+      <div class="inner-text" style="top: 50vh">
+        Johann Ulrich Zellweger (1804–1871), Gründer der Basler Handelsmission
+        und der Bank für Appenzell Ausserrhoden — einer Vorgängerin der heutigen
+        UBS — verkörpert eine historische Figur, die exemplarisch für die
+        Verflechtung der Schweiz in koloniale Strukturen steht. Als bedeutender
+        Schweizer Akteur des 19. Jahrhunderts nutzte Zellweger globale
+        Handelsnetzwerke, um von kolonialen Wirtschaftsprozessen zu profitieren.
+      </div>
+      <div class="inner-text" style="top: 80vh">
+        <u class="underlined-text">Die Rolle der Schweiz im kolonialen System</u
+        ><br />
+        Der Kolonialismus der Schweiz war nicht durch territoriale Eroberungen
+        oder direkte politische Kontrolle geprägt. Stattdessen spielte das Land
+        durch wirtschaftliche Macht, finanzielle Abhängigkeiten und kulturelle
+        Einflüsse eine zentrale Rolle im globalen Handel. Zellwegers Leben und
+        Beziehungsnetz zeigt exemplarisch, wie die Schweiz durch transnationale
+        Handelsaktivitäten, die Finanzierung kolonialer Projekte und die
+        Verknüpfung lokaler Interessen mit globalen Märkten indirekt am
+        kolonialen System teilhatte. Zellweger steht somit nicht nur für den
+        wirtschaftlichen Erfolg aus dem Appenzell, sondern auch für die
+        komplexen Verflechtungen, die es einem Land ohne eigene Kolonien
+        ermöglichten, dennoch vom Kolonialismus zu profitieren.
+      </div>
+
+      <div class="inner-text" style="top: 150vh">
+        <u class="underlined-text">Jugend und familiäre Prägungen</u><br />
+        Zellweger wuchs in einer wohlhabenden Schweizer Textilhandelsfamilie
+        auf, die seit dem 17. Jahrhundert stark in globale Handelsnetzwerke
+        integriert war. Sie importierten Rohbaumwolle von Kolonialplantagen in
+        Amerika, die von versklavten Menschen bewirtschaftet wurden. In den
+        heimischen Manufakturen wurde diese Baumwolle unter anderem zu den
+        begehrten Indiennes verarbeitet — farbig bedruckte Stoffe, die neben
+        Waffen und Alkohol zu den wichtigsten Gütern zählten, die an der
+        Westküste Afrikas gegen Menschen getauscht wurden. Die Familie war somit
+        direkt in den transatlantischen Dreieckshandel eingebunden, was einen
+        wesentlichen Bestandteil ihres grossen wirtschaftlichen Erfolgs
+        ausmachte.
+      </div>
+
+      <div class="inner-text" style="top: 280vh">
+        <u class="underlined-text"
+          >England: Erste Schritte im internationalen Handel</u
+        ><br />
+        Nach seinem Umzug nach London arbeitete Johann Ulrich Zellweger zunächst
+        als Angestellter, bevor er 1827 gemeinsam mit einem Geschäftspartner aus
+        Zürich ein Unternehmen gründete. «Orelli & Zellweger» spezialisierte
+        sich auf die Herstellung und den Vertrieb von Hornkämmen und setzte
+        dabei auf die Verarbeitung von brasilianischem Horn, das Zellweger als
+        vielversprechende Grundlage für geschäftlichen Erfolg ansah. Der
+        Einstieg in die Selbstständigkeit misslang jedoch: Nach nur drei Jahren
+        musste die Firma 1830 aufgelöst werden und der verschuldete Unternehmer
+        liess ein Jahr später auf Kuba nieder.
+      </div>
+      <div class="inner-text" style="top: 380vh">
+        <u class="underlined-text"
+          >Kuba: Profiteur des kolonialen Wirtschaftssystems </u
+        ><br />
+        Die Anregung dazu erhielt er durch den Zuckerplantagenbesitzer Heinrich
+        Studer aus Winterthur, der jedoch noch vor Zellwegers Ankunft in Kuba
+        verstarb. In Havanna fand Zellweger zunächst nur schwer Fuss. Zellweger
+        versuchte sich in verschiedenen Tätigkeiten und lebte sehr sparsam, um
+        seine Schulden zu begleichen. Während dieser Zeit kam er in Kontakt mit
+        Charles Drake, einem führenden Exporteur im kubanischen Zuckerhandel.
+        Nach einer sechsmonatigen Probezeit wurde Zellweger 1835 als Teilhaber
+        in die Firma «Charles Drake & Co.» aufgenommen. <br />
+        <br />
+        Später wurde er Mitinhaber des Unternehmens «Drake Brothers & Co.», das
+        mit Zucker und Kaffee, aber auch mit Rindfleisch, Goldbarren und Devisen
+        handelte. Mitinhaber Charles Drake rühmte sich, «Besitzer einer
+        Zuckerplantage mit etwa 400 Sklaven» zu sein. Die Familie Drake
+        kontrollierte zwei Drittel der kubanischen Zuckerexporte und vergab
+        Kredite an andere Besitzer von Sklavenplantagen. So machte Zellweger
+        durch die Finanzierung des Sklavenhandels grosse Profite. <br />
+        <br />
+        Seine Tätigkeiten auf Kuba trafen auch auf Interessen aus der Schweiz.
+        So wurde Zellwegers Name 1846 in einem Schreiben von Alfred Escher
+        erwähnt. Escher unterstützte damals seinen Vater Heinrich beim diskreten
+        Verkauf seiner Kaffeeplantage auf Kuba. In einem Brief an Jakob
+        Zellweger in Trogen bat Alfred Escher um eine Empfehlung, um den Kontakt
+        zu seinem Bruder herzustellen. Er schrieb: «Ich habe nun gehört, dass
+        ein Herr Zellweger in dem Hause Drake in Havanna sich befinde & dass er
+        ein in Beziehung auf Geschäftstüchtigkeit & Charakter gleich trefflicher
+        Mann sei. Auf den Wunsch meines Vaters hin erlaube ich mir nun, mich an
+        Sie mit der Anfrage zu wenden, ob dem wirklich so sei, ob er zu ihren
+        Verwandten zählt & ob Sie, falls dies der Fall wäre, vielleicht die
+        Gefälligkeit hätten, meinen Vater durch empfehlende Zeilen bei ihm
+        einzuführen». Jakob Zellweger kam dieser Bitte nach, aber zu diesem
+        Zeitpunkt hatte Johann Ulrich Zellweger die Insel bereits verlassen.
+      </div>
+      <div class="inner-text" style="top: 520vh">
+        <u class="underlined-text">Rückkehr nach Trogen </u><br />
+        Nach seiner Rückkehr in die Schweiz 1846 engagierte sich Zellweger
+        zunehmend in geschäftlichen und philanthropischen Netzwerken. Er pflegte
+        enge Kontakte in den USA, darunter zu bedeutenden Unternehmern wie John
+        Jacob Astor und Moses Taylor, die für ihr philanthropisches Engagement
+        bekannt waren. Zellweger investierte sein Vermögen fortan in christliche
+        Werke der Inneren und Äusseren Mission. Dabei vertieften sich seine
+        Geschäftsbeziehungen zu Gleichgesinnten, insbesondere aus dem
+        orthodox-pietistisch geprägten Basler Patriziat und kooperierte mit
+        Handelsdynastien wie «Burkhardt-Wildt & Sohn» welche mit Seide, Kaffee
+        und Zucker handelte.
+      </div>
+
+      <div class="inner-text" style="top: 620vh">
+        <u class="underlined-text">Paris: Die Gründung einer Bank </u><br />
+        Die Februarrevolution 1848 in Paris bedrohte Zellwegers Vermögen, das
+        mehrheitlich in französischen Wertpapieren angelegt war. Im Auftrag der
+        bedeutesten Basler Bankhäuser gründete Zellweger gemeinsam mit Carl
+        Respinger in Paris die Bank «Ulric Zellweger & Cie». Bis zu der
+        Geschäftsübergabe an seinen Neffens, lebte er mit seiner Familie in
+        Paris. Der Erfolg der Bank, die im Kommissionsgeschäft tätig war,
+        beflügelte seine vom reformierten Gedanken der Erwählung durchdrungenen
+        philantropischen Aktivitäten.
+      </div>
+
+      <div class="inner-text" style="top: 720vh">
+        <u class="underlined-text">Basler Missions-Handlungs-Gesellschaft </u
+        ><br />
+        1858 wurde Zellweger in das Komitee der Basler Mission berufen. Ein Jahr
+        später wurde er zum ersten Präsidenten der von ihm gegründeten Basler
+        Missions-Handlungs-Gesellschaft gewählt. Unter seiner Leitung und dem
+        Wissen, das er aus den Zuckerplantagen in Kuba gewonnen hatte, führte
+        die Handelsgesellschaft die Kakaokultur in Ghana ein und erreichte bis
+        zum Ersten Weltkrieg eine führende Position auf dem Weltmarkt. <br />
+        <br />
+        Der Handel war jedoch nur ein Teil des Konzepts. Ein zentrales Motiv war
+        das Bestreben, Gesellschaften, die seit dem 16. Jahrhundert durch die
+        europäische Versklavung geprägt waren, in Gesellschaften freier Menschen
+        zu transformieren. Dies sollte durch eine Integration in den modernen
+        Warenhandel erreicht werden, was zugleich eine Idee von Wiedergutmachung
+        implizierte. Der Erfolg dieses Vorhabens hing jedoch stark von der
+        Zusammenarbeit mit den kolonialen Mächten vor Ort ab. <br />
+        <br />
+        Gleichzeitig war die Haltung der Missionare gegenüber der einheimischen
+        Bevölkerung stark paternalistisch geprägt. Sie blieben tief in
+        europäischen Denkmustern verhaftet und betrachteten die protestantische
+        Lebensweise als überlegen. Ziel war es, die Menschen in den
+        Missionsgebieten nach diesem Modell umzugestalten. Dies hatte
+        insbesondere in Indien weitreichende Folgen: Hindus, die zum Christentum
+        konvertierten, wurden aus ihrer Kaste ausgeschlossen und vollständig von
+        der Mission abhängig. <br />
+        <br />
+        Diese Missionstätigkeit basierte auf einem selbstgerechten Glauben an
+        einen höheren Auftrag, bei dem der Aufbau globaler Handelsstrukturen oft
+        mit der Zerstörung bestehender sozialer Gefüge einherging. Erfolg und
+        Misserfolg wurden als Zeichen Gottes interpretiert und dienten als
+        Antrieb für weiteres Engagement. Auffällig ist die Kontinuität zwischen
+        den alteingesessenen Handelsdynastien, die während des Atlantischen
+        Dreieckshandels zu Reichtum gelangt waren, und den Unterstützern sowie
+        Komiteemitgliedern der Basler Mission.
+      </div>
+      <div class="inner-text" style="top: 820vh">
+        <u class="underlined-text">Die Bank für Appenzell Ausserrhoden </u
+        ><br />
+        1866 gründete Zellweger gemeinsam mit Gleichgesinnten die Bank für
+        Appenzell Ausserrhoden, die 1909 mit dem Schweizerischen Bankverein (der
+        heutige UBS) fusionierte. Diese Verbindung unterstreicht die Kontinuität
+        zwischen den Handelsdynastien des 18. Jahrhunderts und der modernen
+        Schweizer Finanzwirtschaft.
+      </div>
+      <div class="inner-text" style="top: 820vh">
+        <u class="underlined-text">Heute: Aufarbeitung und Verantwortung</u
+        ><br />
+        Zellwegers Erbe wirft Fragen zur Rolle der Schweiz im Kolonialismus auf.
+        Historiker wie Hans Fässler fordern eine Aufarbeitung der Verflechtungen
+        des Schweizer Finanzplatzes mit dem Sklavenhandel. Die UBS, als
+        Nachfolgerin von Zellwegers Bank, stellt sich bislang quer. Diese
+        Diskussion zeigt, wie eng historische Akteure wie Johann Ulrich
+        Zellweger mit aktuellen Debatten um Verantwortung und Wiedergutmachung
+        verbunden sind.
+      </div>
+      <div class="inner-text" style="top: 851vh">
+        Fiona Zellweger, Journalistisches Schreiben, 2024 Universität Luzern
+        <br />
+        Informationsquellen: Schärer Knutti, A. (2010) Globale Verflechtungen
+        und protestantische Netzwerke im 19. Jahrhundert Fässler, H. (with
+        Antonio, J. P., & Traber, H.). (2020). Reise in Schwarz-Weiss: Schweizer
+        Ortstermine in Sachen Sklaverei, Rotpunktverlag
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        var dimensions = {},
+          elements = [];
+
+        var onResize = function () {
+          dimensions.windowHeight = $(window).height();
+          dimensions.boxHeight = $(".box-placeholder").height();
+          dimensions.boxOffsetTop = $(".box-placeholder").offset().top;
+        };
+        $(window).resize(onResize);
+
+        $(document).on("ready", function () {
+          $(".box").each(function (index, box) {
+            if (index === 0) return true;
+            elements.push(box);
+          });
+          onResize();
+          // Set the initial scroll position to 10px
+          window.scrollTo(0, 1); // Scrolls the window to 10px on load
+        });
+
+        document.addEventListener("scroll", function () {
+          var scrollPosition = window.scrollY - dimensions.boxOffsetTop;
+          if (scrollPosition < 0) return true;
+          var division =
+            scrollPosition / (dimensions.boxHeight / (elements.length + 1));
+          var currentIndex = Math.floor(division);
+          var rest = division - currentIndex;
+          for (var i = 0; i < currentIndex; i++) {
+            elements[i].style.opacity = 1;
+          }
+          elements[currentIndex].style.opacity = rest * 8;
+          for (var i = currentIndex + 1; i < elements.length; i++) {
+            elements[i].style.opacity = 0;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
