@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vom Lokalen Akteur zum globalen Netzwerk</title>
+    <style type="text/css">
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+      }
+
+      .box {
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: 50% 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: -1;
+      }
+
+      .box-placeholder {
+        position: relative;
+        height: 10800px; /* Determines scrolling length */
+        background: transparent;
+        box-sizing: content-box;
+      }
+
+      @font-face {
+        font-family: "AuthenticRegular";
+        src: url("fonts/AUTHENTICSans-90.otf") format("opentype");
+      }
+      @font-face {
+        font-family: "AuthenticBold";
+        src: url("fonts/AUTHENTICSans-130.otf") format("opentype");
+      }
+
+      .inner-text {
+        position: absolute;
+        font-family: "AuthenticRegular";
+        font-size: clamp(17px, 2.5vw, 21px);
+        line-height: 1.4em;
+        color: rgba(23, 23, 23, 1);
+        max-width: clamp(80px, 900vw, 725px); /* Limit the width of the text */
+        padding: 20px;
+        background-color: rgb(227, 227, 227, 0.9);
+        border: 1.75px solid rgba(23, 23, 23, 1);
+        border-radius: 12px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        transform: translateX(0);
+        z-index: 2;
+      }
+
+      .title-text {
+        position: absolute;
+        font-family: "AuthenticBold";
+        font-size: clamp(50px, 8vw, 110px);
+        text-align: center;
+        line-height: 1.1em;
+        color: #e3e3e3;
+        max-width: 750px;
+        background-color: transparent;
+        margin: auto;
+        left: 0;
+        right: 0;
+      }
+
+      u.underlined-text {
+        font-family: "AuthenticBold";
+        text-decoration: none;
+        text-underline-offset: 4px;
+      }
+
+      .image-over-text {
+        position: fixed; /* Ensures the image stays fixed relative to the viewport */
+        top: 0;
+        left: 0;
+        width: 100%; /* Full width of the viewport */
+        height: 100%; /* Full height of the viewport */
+        z-index: 1000; /* Ensure it stays above other elements */
+        opacity: 0; /* Start hidden */
+        transition: opacity 0.5s ease; /* Smooth fade-in and fade-out */
+      }
+
+      .image-over-text img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image scales proportionally */
+      }
+
+      .image-under-text {
+        position: fixed; /* Ensures the image stays fixed relative to the viewport */
+        bottom: 0; /* Positions the image at the bottom of the viewport */
+        left: 0;
+        width: 100%; /* Full width of the viewport */
+        height: 100%; /* Full height of the viewport */
+        z-index: 1; /* Ensure it stays below other elements */
+        opacity: 0; /* Start hidden */
+        transition: opacity 0.5s ease; /* Smooth fade-in and fade-out */
+      }
+
+      .image-under-text img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image scales proportionally */
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  </head>
+  <body>
+    <!-- Images -->
+    <div class="image-over-text" data-start="900" data-end="1700">
+      <img src="images/kw1_over.png" alt="Image 1" />
+    </div>
+    <div class="image-under-text" data-start="1600" data-end="2800">
+      <img src="images/kw2_picture.png" alt="Image 1" />
+    </div>
+    <div class="image-over-text" data-start="2160" data-end="2800">
+      <img src="images/kw2_over.png" alt="Image 1" />
+    </div>
+
+    <div class="image-over-text" data-start="3340" data-end="3800">
+      <img src="images/kw3_over.png" alt="Image 1" />
+    </div>
+    <div class="image-over-text" data-start="4350" data-end="5400">
+      <img src="images/kw4_over.png" alt="Image 1" />
+    </div>
+
+    <div class="image-under-text" data-start="4350" data-end="5400">
+      <img src="images/kw5_picture.png" alt="Image 1" />
+    </div>
+
+    <div class="image-over-text" data-start="5800" data-end="6100">
+      <img src="images/kw5_over.png" alt="Image 1" />
+    </div>
+
+    <div class="image-over-text" data-start="6800" data-end="7200">
+      <img src="images/kw6_over.png" alt="Image 1" />
+    </div>
+    <div class="image-over-text" data-start="8100" data-end="8900">
+      <img src="images/kw7_over.png" alt="Image 1" />
+    </div>
+    <div class="image-under-text" data-start="8100" data-end="8900">
+      <img src="images/kw7_picture.png" alt="Image 1" />
+    </div>
+
+    <!-- Fixed Background Boxes -->
+    <div class="boxes">
+      <div
+        class="box"
+        style="background-image: url('images/kw0.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw1.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw2.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw3.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw4.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw5.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw6.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw7.jpg'); opacity: 1"
+      ></div>
+      <div
+        class="box"
+        style="background-image: url('images/kw8.jpg'); opacity: 1"
+      ></div>
+    </div>
+
+    <div class="box-placeholder">
+      <div class="title-text" style="top: 200px">
+        Vom Lokalen Akteur zum globalen Netzwerk
+      </div>
+
+      <div class="inner-text" style="top: 1000px">
+        <u class="underlined-text">Auf den Spuren der Zellweger</u><br />
+        Mein Nachname, Zellweger, war für mich der Schlüssel zur Aufarbeitung
+        dieser Geschichte. Die Verflechtungen der Textilhandelsfamilie Zellweger
+        in den Kolonialismus liessen mich nicht los. Ich wollte mehr wissen über
+        meine möglichen Vorfahren – nicht nur als historische Figuren, sondern
+        auch, um zu verstehen, welche Verantwortung wir in der Schweiz für unser
+        koloniales Erbe heute tragen.
+      </div>
+      <div class="inner-text" style="top: 1300px">
+        <u class="underlined-text"
+          >Ulrich Zellweger und die Schweiz im kolonialen System</u
+        ><br />
+        Der Kolonialismus der Schweiz war nicht durch territoriale Eroberungen
+        oder direkte politische Kontrolle geprägt. Stattdessen spielte das Land
+        durch wirtschaftliche Macht, finanzielle Abhängigkeiten und kulturelle
+        Einflüsse eine zentrale Rolle im globalen Handel. Zellwegers Leben und
+        Beziehungsnetz zeigt exemplarisch, wie die Schweiz durch transnationale
+        Handelsaktivitäten, die Finanzierung kolonialer Projekte und die
+        Verknüpfung lokaler Interessen mit globalen Märkten am kolonialen System
+        teilnahm. Zellweger steht somit nicht nur für den wirtschaftlichen
+        Erfolg aus dem Appenzell, sondern auch für die komplexen Verflechtungen,
+        die es einem Land ohne eigene Kolonien ermöglichten, dennoch vom
+        Kolonialismus zu profitieren.
+      </div>
+
+      <div class="inner-text" style="top: 2360px">
+        <u class="underlined-text">Wurzeln in einer Unternehmerdynastie</u
+        ><br />
+        Johann Ulrich Zellweger (1804-1871), wurde in eine wohlhabende
+        Textilhandelsfamilie aus Trogen im Appenzell hineingeboren. Der
+        wirtschaftliche Erfolg der Familie beruhte nicht allein auf ihrem
+        kaufmännischen Geschick und ihrer Tüchtigkeit, sondern auch auf ihrer
+        Rolle innerhalb des transatlantischen Handelssystems, das auf der
+        Verschleppung und Versklavung von Millionen Afrikanerinnen basierte. Die
+        Familie Zellweger importierte Rohbaumwolle aus amerikanischen Plantagen,
+        welche von versklavten Menschen bewirtschaftet wurden, und verarbeitete
+        diese in in heimischen Manufakturen zu den begehrten Indiennes – farbig
+        bedruckten Stoffen. Zu dieser Zeit ein begehrtes Handelsgut, mit dem an
+        der westafrikanischen Küste auch Sklaven gekauft und eingetauscht
+        wurden.
+        <br />
+        <br />
+        Die Geschichte der Zellweger spiegelt sich bis heute in der Architektur
+        von Trogen wider: Der Landsgemeindeplatz ist gesäumt von prächtigen
+        Bauten, die in ihrer Opulenz und Grösse aus der ländlichen Umgebung
+        herausstechen. Sie zeugen von einem Reichtum, der aus globalen Handels-
+        und Kolonialstrukturen erwuchs.
+      </div>
+
+      <div class="inner-text" style="top: 3640px">
+        <u class="underlined-text">Erste Schritte im internationalen Handel</u
+        ><br />
+        Schon früh zog es Ulrich Zellweger in die Welt. Nach einer Ausbildung in
+        Handelshäusern in Marseille führte ihn sein Weg nach London. Dort
+        gründete er 1827 gemeinsam mit einem Geschäftspartner das Unternehmen
+        «Orelli & Zellweger», das auf die Verarbeitung von brasilianischem Horn
+        spezialisiert war. Doch der Erfolg blieb aus. Nach nur drei Jahren war
+        die Firma bankrott, und Zellweger wagte auf Empfehlung des
+        Zuckerplantagenbesitzers Heinrich Studer aus Winterthur einen Neuanfang
+        – auf Kuba.
+      </div>
+      <div class="inner-text" style="top: 4820px">
+        <u class="underlined-text"
+          >Profite aus einem kolonialen Wirtschaftssystem</u
+        ><br />
+        In Havanna hatte Zellweger zunächst Mühe, Fuss zu fassen. Er versuchte
+        sich in verschiedenen Tätigkeiten, lebte sparsam und arbeitete daran,
+        seine Schulden zu begleichen. Der Wendepunkt kam, als er Charles Drake,
+        einen führenden Exporteur im kubanischen Zuckerhandel, kennenlernte.
+        Nach einer sechsmonatigen Probezeit wurde Zellweger 1835 als Teilhaber
+        in dessen Firma «Charles Drake & Co.» aufgenommen. Die Familie Drake
+        kontrollierte den Grossteil der kubanischen Zuckerexporte und besass
+        eigene Zuckerplantagen mit rund 400 Sklaven.
+      </div>
+      <div class="inner-text" style="top: 5180px">
+        <u class="underlined-text">Kontakte in die Schweiz</u><br />
+        Seine Tätigkeiten auf Kuba traf auch auf Interessen aus der Schweiz.
+        Zellwegers Name taucht in Schweizer Korrespondenzen auf: Alfred Escher,
+        bedeutender Politiker und Unternehmer, versuchte über ihn den diskreten
+        Verkauf einer Kaffeeplantage seines Onkels auf Kuba zu arrangieren.
+        Diese Verbindung zeigt, wie eng Schweizer Interessen mit den kolonialen
+        Systemen jener Zeit verwoben waren.
+      </div>
+
+      <div class="inner-text" style="top: 6160px">
+        <u class="underlined-text">Rückkehr nach Trogen</u><br />
+        Zellweger kam 1846 als reicher Mann zurück in die Schweiz und wandelte
+        sich vom Unternehmer zum Philanthropen. Er nutzte sein Vermögen, um in
+        christliche Missionswerke zu investieren, und pflegte Kontakte zu
+        einflussreichen Persönlichkeiten aus Amerika.
+      </div>
+
+      <div class="inner-text" style="top: 7240px">
+        <u class="underlined-text">Zellweger als Bankier</u><br />
+        Die Februarrevolution 1848 in Paris bedrohte Zellwegers Vermögen, das
+        grösstenteils in französischen Wertpapieren angelegt war. Im Auftrag der
+        bedeutendsten Basler Bankhäuser gründete Zellweger die Bank «Ulric
+        Zellweger & Cie». Der Erfolg der Bank bestärkte ihn in seiner
+        Überzeugung, als Teil einer göttlichen Auserwählung zu handeln, und
+        wurde zur Grundlage für ein noch intensiveres Engagement in sozialen und
+        religiösen Projekten, die er als Ausdruck seines höheren Auftrags
+        verstand.
+      </div>
+      <div class="inner-text" style="top: 8320px">
+        <u class="underlined-text"
+          >Präsident der Basler Missions-Handlungs-Gesellschaft</u
+        ><br />
+        1858 wurde Zellweger ins Komitee der Basler Mission berufen, ein Jahr
+        später zum ersten Präsidenten der von ihm gegründeten Basler
+        Missions-Handlungs-Gesellschaft gewählt. Unter seiner Leitung führte die
+        Gesellschaft die Kakaokultur in Ghana ein – eine Expertise, die
+        Zellweger aus seiner Zeit auf den Zuckerplantagen in Kuba mitbrachte.
+        Eines der Ziele der Basler Mission war es, Gesellschaften, die durch
+        europäische Versklavung geprägt waren, in den globalen Markt zu
+        integrieren – eine Idee, aus der sie sich «Wiedergutmachung»
+        versprachen. <br />
+        <br />Dieses Vorhaben scheiterte jedoch an der Zusammenarbeit mit
+        kolonialen Mächten vor Ort und einer Haltung, welche von europäischer
+        Überlegenheit geprägt war. Die Mission verband wirtschaftlichen Erfolg
+        mit einem selbstgerechten Glauben an einen höheren Auftrag, was den
+        Aufbau globaler Handelsstrukturen mit der Zerstörung bestehender
+        sozialer Gefüge verknüpfte. Auffällig ist die Kontinuität zwischen den
+        alteingesessenen Handelsdynastien, die während des Atlantischen
+        Dreieckshandels zu Reichtum gelangt waren, und den Unterstützern sowie
+        Komiteemitgliedern der Basler Mission.
+      </div>
+      <div class="inner-text" style="top: 9900px">
+        <u class="underlined-text">Zellwegers Vermächtnis</u><br />
+        1866 gründete Zellweger gemeinsam mit Gleichgesinnten die Bank Appenzell
+        Ausserrhoden, die 1909 mit dem Schweizerischen Bankverein fusionierte –
+        der Vorgängerin der heutigen UBS. <br /><br />Zellwegers Erbe wirft bis
+        heute Fragen zur Rolle der Schweiz im Kolonialismus auf. Historiker wie
+        Hans Fässler fordern eine Aufarbeitung der Verflechtungen des Schweizer
+        Finanzplatzes mit dem Sklavenhandel. Die UBS, als Nachfolgerin von
+        Zellwegers Bank, stellt sich bislang quer. Diese Diskussion zeigt, wie
+        eng historische Akteure wie Johann Ulrich Zellweger mit aktuellen
+        Debatten um Verantwortung und Wiedergutmachung verbunden sind.
+      </div>
+      <div class="inner-text" style="top: 10350px">
+        Fiona Zellweger, Journalistisches Schreiben, 2025 Universität Luzern
+        <br />
+        Informationsquellen: Schärer Knutti, A. (2010) Globale Verflechtungen
+        und protestantische Netzwerke im 19. Jahrhundert <br />Fässler, H. (with
+        Antonio, J. P., & Traber, H.). (2020). Reise in Schwarz-Weiss: Schweizer
+        Ortstermine in Sachen Sklaverei, Rotpunktverlag
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        var dimensions = {},
+          elements = [];
+
+        var onResize = function () {
+          dimensions.windowHeight = $(window).height();
+          dimensions.boxHeight = $(".box-placeholder").height();
+          dimensions.boxOffsetTop = $(".box-placeholder").offset().top;
+        };
+        $(window).resize(onResize);
+
+        $(document).on("ready", function () {
+          $(".box").each(function (index, box) {
+            if (index === 0) return true;
+            elements.push(box);
+          });
+          onResize();
+          // Set the initial scroll position to 10px
+          window.scrollTo(0, 10); // Scrolls the window to 10px on load
+        });
+
+        document.addEventListener("scroll", function () {
+          var scrollPosition = window.scrollY - dimensions.boxOffsetTop;
+          if (scrollPosition < 0) return true;
+
+          var division =
+            scrollPosition / (dimensions.boxHeight / (elements.length + 1));
+          var currentIndex = Math.floor(division);
+          var rest = division - currentIndex;
+
+          for (var i = 0; i < currentIndex; i++) {
+            if (elements[i]) elements[i].style.opacity = 1;
+          }
+          if (elements[currentIndex]) {
+            elements[currentIndex].style.opacity = rest * 8;
+          }
+          for (var i = currentIndex + 1; i < elements.length; i++) {
+            if (elements[i]) elements[i].style.opacity = 0;
+          }
+
+          // Image visibility logic for images shown above the text
+          const imagesOverText = document.querySelectorAll(".image-over-text");
+          imagesOverText.forEach((image) => {
+            const start = parseInt(image.getAttribute("data-start") || 0, 10);
+            const end = parseInt(image.getAttribute("data-end") || 0, 10);
+
+            if (!isNaN(start) && !isNaN(end)) {
+              if (scrollPosition >= start && scrollPosition <= end) {
+                image.style.opacity = 1;
+              } else {
+                image.style.opacity = 0;
+              }
+            }
+          });
+
+          // Image visibility logic for images shown under the text
+          const imagesUnderText =
+            document.querySelectorAll(".image-under-text");
+          imagesUnderText.forEach((image) => {
+            const start = parseInt(image.getAttribute("data-start") || 0, 10);
+            const end = parseInt(image.getAttribute("data-end") || 0, 10);
+
+            if (!isNaN(start) && !isNaN(end)) {
+              if (scrollPosition >= start && scrollPosition <= end) {
+                image.style.opacity = 1;
+              } else {
+                image.style.opacity = 0;
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
